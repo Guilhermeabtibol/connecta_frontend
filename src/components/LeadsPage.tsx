@@ -1,5 +1,5 @@
 // src/components/LeadsPage.tsx
-import React from 'react';
+
 
 const LeadsPage = () => {
   return (
