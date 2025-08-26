@@ -14,7 +14,7 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/auth/register', {
+      await axios.post('https://coneccta-backend.onrender.com/api/auth/register', {
         name,
         email,
         password,
