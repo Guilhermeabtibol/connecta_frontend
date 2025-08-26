@@ -35,7 +35,7 @@ const Register = () => {
 
         {/* Campo de Nome */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-900 font-semibold mb-2">Nome</label>
+          <label htmlFor="name" className="block text-gray-900  font-semibold mb-2">Nome</label>
           <input
             type="text"
             id="name"
@@ -49,7 +49,7 @@ const Register = () => {
 
         {/* Campo de Email */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-900 font-semibold mb-2">Email</label>
+          <label htmlFor="email" className="block text-gray-900 bg-gray-700 font-semibold mb-2">Email</label>
           <input
             type="email"
             id="email"
@@ -63,7 +63,7 @@ const Register = () => {
 
         {/* Campo de Senha com botão de alternância */}
         <div className="mb-4 relative">
-          <label htmlFor="password" className="block text-gray-900 font-semibold mb-2">Senha</label>
+          <label htmlFor="password" className="block text-gray-900  bg-gray-700 font-semibold mb-2">Senha</label>
           <input
             type={showPassword ? 'text' : 'password'} // Alterna entre 'password' e 'text'
             id="password"
@@ -83,7 +83,7 @@ const Register = () => {
         
         {/* Campo de Função (Role) */}
         <div className="mb-6">
-          <label htmlFor="role" className="block text-gray-900 font-semibold mb-2">Função</label>
+          <label htmlFor="role" className="block text-gray-900  bg-gray-700 font-semibold mb-2">Função</label>
           <select
             id="role"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
