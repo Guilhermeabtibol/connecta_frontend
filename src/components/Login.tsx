@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form onSubmit={handleLogin} className="p-8 bg-white rounded shadow-md w-full max-w-sm">
+      <form onSubmit={handleLogin} className="p-8 bg-gray-800 rounded shadow-md w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         
         {/* Campo de Email */}
