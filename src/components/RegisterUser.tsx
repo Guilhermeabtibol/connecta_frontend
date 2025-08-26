@@ -1,13 +1,14 @@
-// src/components/Register.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ícones para mostrar/esconder a senha
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('sales'); // O valor padrão é 'sales'
+  const [role, setRole] = useState('sales');
+  const [showPassword, setShowPassword] = useState(false); // Novo estado para alternar a visibilidade
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -20,7 +21,7 @@ const Register = () => {
         role,
       });
       alert('Usuário registrado com sucesso! Por favor, faça o login.');
-      navigate('/'); // Redireciona para a página de login
+      navigate('/');
     } catch (error) {
       alert('Não foi possível registrar o usuário. Tente novamente.');
       console.error(error);
@@ -34,7 +35,7 @@ const Register = () => {
 
         {/* Campo de Nome */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Nome</label>
+          <label htmlFor="name" className="block text-gray-900 font-semibold mb-2">Nome</label>
           <input
             type="text"
             id="name"
@@ -48,7 +49,7 @@ const Register = () => {
 
         {/* Campo de Email */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
+          <label htmlFor="email" className="block text-gray-900 font-semibold mb-2">Email</label>
           <input
             type="email"
             id="email"
@@ -60,23 +61,29 @@ const Register = () => {
           />
         </div>
 
-        {/* Campo de Senha */}
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Senha</label>
+        {/* Campo de Senha com botão de alternância */}
+        <div className="mb-4 relative">
+          <label htmlFor="password" className="block text-gray-900 font-semibold mb-2">Senha</label>
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'} // Alterna entre 'password' e 'text'
             id="password"
             placeholder="Crie uma senha"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10" // pr-10 para dar espaço ao ícone
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <span 
+            className="absolute inset-y-0 right-0 top-6 flex items-center pr-3 cursor-pointer text-gray-600"
+            onClick={() => setShowPassword(!showPassword)} // Alterna o estado ao clicar
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Mostra o ícone correto */}
+          </span>
         </div>
         
         {/* Campo de Função (Role) */}
         <div className="mb-6">
-          <label htmlFor="role" className="block text-gray-700 font-semibold mb-2">Função</label>
+          <label htmlFor="role" className="block text-gray-900 font-semibold mb-2">Função</label>
           <select
             id="role"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
