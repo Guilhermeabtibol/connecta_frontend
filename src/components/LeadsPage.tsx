@@ -1,6 +1,8 @@
 // src/components/LeadsPage.tsx
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult, DroppableProvided, DroppableStateSnapshot, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import type { DropResult, DroppableProvided, DroppableStateSnapshot, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd';
+
 
 // Definindo o tipo para os status
 type Status = 'Novo' | 'Em Contato' | 'Fechado';
