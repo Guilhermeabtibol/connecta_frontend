@@ -1,5 +1,5 @@
 // src/components/LeadsPage.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import type { DropResult, DroppableProvided, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd';
 
