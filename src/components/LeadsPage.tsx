@@ -1,6 +1,6 @@
 // src/components/LeadsPage.tsx
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult, DroppableProvided, DroppableStateSnapshot, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd';
 
 // Definindo o tipo para os status
 type Status = 'Novo' | 'Em Contato' | 'Fechado';
@@ -18,12 +18,11 @@ const LeadsPage = () => {
 
   const statuses: Status[] = ['Novo', 'Em Contato', 'Fechado'];
 
-  // Corrigindo o erro de tipagem no parâmetro 'status'
   const getLeadsByStatus = (status: Status) => {
     return leads.filter(lead => lead.status === status);
   };
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -40,9 +39,7 @@ const LeadsPage = () => {
     const movedLead = leads.find(lead => lead.id === draggableId);
 
     if (movedLead) {
-      const newLeads = [...leads];
-
-      const updatedLeads = newLeads.map(lead =>
+      const updatedLeads = leads.map(lead =>
         lead.id === movedLead.id ? { ...lead, status: destination.droppableId as Status } : lead
       );
 
@@ -58,7 +55,7 @@ const LeadsPage = () => {
         <div className="flex space-x-4 overflow-x-auto">
           {statuses.map(status => (
             <Droppable droppableId={status} key={status}>
-              {(provided) => (
+              {(provided: DroppableProvided) => (
                 <div
                   ref={provided.innerRef}
                   {...provided.droppableProps}
@@ -68,7 +65,7 @@ const LeadsPage = () => {
                   <div className="space-y-4">
                     {getLeadsByStatus(status).map((lead, index) => (
                       <Draggable key={lead.id} draggableId={lead.id} index={index}>
-                        {(provided, snapshot) => (
+                        {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
                           <div
                             ref={provided.innerRef}
                             {...provided.draggableProps}
