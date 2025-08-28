@@ -14,7 +14,9 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('https://coneccta-backend.onrender.com/api/auth/register', {
+      await axios.post('https://coneccta-backend.onrender.com/api/auth/register'
+      // await axios.post('http://localhost:3000/api/auth/register'
+      , {
         name,
         email,
         password,
@@ -30,17 +32,17 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form onSubmit={handleRegister} className="p-8 bg-gray-800 rounded shadow-md w-full max-w-sm">
+      <form onSubmit={handleRegister} className="p-8  rounded shadow-md w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">Cadastre-se</h2>
 
         {/* Campo de Nome */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-900  font-semibold mb-2">Nome</label>
+          <label htmlFor="name" className="block  font-semibold mb-2">Nome</label>
           <input
             type="text"
             id="name"
             placeholder="Digite seu nome"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md  bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -54,7 +56,7 @@ const Register = () => {
             type="email"
             id="email"
             placeholder="Digite seu email"
-            className="w-full px-3 py-2 border border-gray-300  bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -63,7 +65,7 @@ const Register = () => {
 
         {/* Campo de Senha com botão de alternância */}
         <div className="mb-4 relative">
-          <label htmlFor="password" className="block text-gray-900  bg-gray-700 font-semibold mb-2">Senha</label>
+          <label htmlFor="password" className="block text-gray-900 font-semibold mb-2">Senha</label>
           <input
             type={showPassword ? 'text' : 'password'} // Alterna entre 'password' e 'text'
             id="password"
@@ -83,7 +85,7 @@ const Register = () => {
         
         {/* Campo de Função (Role) */}
         <div className="mb-6">
-          <label htmlFor="role" className="block text-gray-900  bg-gray-700 font-semibold mb-2">Função</label>
+          <label htmlFor="role" className="block text-gray-900 font-semibold mb-2">Função</label>
           <select
             id="role"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
